@@ -40,7 +40,7 @@ Returns the plural form of `word`.
 """
 function to_plural(word::String; is_irregular::Bool = Inflector.is_irregular(word)) :: Union{Nothing,String}
   is_irregular && return to_plural_irregular(word)
-  endswith(word, "y") && ! in(word[end-1], vowels) && return (word[1:end-1] * "ies") # category -> categories // story -> stories
+  endswith(word, "y") && ! in(string(word[end-1]), vowels) && return (word[1:end-1] * "ies") # category -> categories // story -> stories
   is_singular(word) ? (word * "s") : (word)
 end
 
